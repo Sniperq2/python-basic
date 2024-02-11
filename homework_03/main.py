@@ -5,18 +5,15 @@ app = FastAPI()
 
 
 @app.get("/items/{item_id}")
-async def read_item(item_id: int):
-    headers = {"Content-Type", "application/json"}
-    return JSONResponse(content={"item_id": item_id}, headers=headers)
+def read_item(item_id: int):
+    return {"item_id": item_id}
 
 
 @app.get("/ping", status_code=200)
-async def ping():
-    headers = {"Content-Type", "application/json"}
-    return JSONResponse(content={"message": "pong"}, headers=headers)
+def ping():
+    return {"message": "pong"}
 
 
 @app.get("/")
-async def root():
-    headers = {"Content-Type", "application/json"}
-    return JSONResponse(content={"message": "Hello World"}, headers=headers)
+def root():
+    return {"message": "Hello World"}
