@@ -48,8 +48,10 @@ async def fetch_api(url: str) -> List[dict]:
 
 
 async def main():
-    user_fetch = await fetch_api(USERS_DATA_URL)
-    posts_fetch = await fetch_api(POSTS_DATA_URL)
+    user_fetch, posts_fetch = asyncio.gather(
+        fetch_api(USERS_DATA_URL),
+        fetch_api(POSTS_DATA_URL)
+    )
 
     async with async_session() as session:
         for userItem in user_fetch:
