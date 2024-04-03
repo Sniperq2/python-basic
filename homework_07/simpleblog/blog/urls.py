@@ -1,9 +1,8 @@
 from django.urls import path, include
 
-from . import views
+from .views import PostsListView
 
 urlpatterns = [
-    path("", views.index, name='index'),
-    path('posts/', views.posts_list, name='posts'),
+    path("", PostsListView.as_view(), name="posts"),
     path("__debug__/", include("debug_toolbar.urls")),
 ]

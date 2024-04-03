@@ -1,13 +1,8 @@
-from django.shortcuts import render
-from django.utils import timezone
+from django.views.generic.list import ListView
 
 from .models import Post
 
 
-def posts_list(request):
-    posts = Post.objects.order_by('published_date')
-    return render(request, 'post_list.html', {'posts': posts})
-
-
-def index(request):
-    return render(request, 'root.html', {})
+class PostsListView(ListView):
+    model = Post
+    context_object_name = 'posts'
