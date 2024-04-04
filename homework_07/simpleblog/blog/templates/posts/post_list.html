@@ -4,7 +4,7 @@
 <ul>
     {% for post in posts %}
     <li>
-        <h1> {{ post.title }}</h1>
+        <a href="{% url 'post' post.pk %}"><h1> {{ post.title }}</h1></a>
         <p> {{ post.created_date }}</p>
         <p> {{ post.published_date }}</p>
     </li>
