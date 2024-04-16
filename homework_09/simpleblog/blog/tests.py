@@ -1,12 +1,12 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 
-from homework_09.simpleblog.blog.models import Post
+from .models import Post
 
 
 class PostTest(TestCase):
-    def setUpTestData(self) -> None:
-        fake_user = User.objects.create(name='testuser')
+    def setUp(self) -> None:
+        fake_user = User.objects.create_user(username='testuser', password='12345')
         Post.objects.create(author=fake_user, title="title 1", text="simple text 1")
         Post.objects.create(author=fake_user, title="title 2", text="simple text 2")
 
