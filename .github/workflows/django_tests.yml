@@ -8,7 +8,7 @@ on:
     pull_request:
        branches: [master]
        paths:
-         - ".github/workflows/django_tests.yaml"
+         - ".github/workflows/django_tests.yml"
 
 jobs:
   basic_test:
