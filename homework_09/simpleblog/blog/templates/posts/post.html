@@ -1,8 +1,0 @@
-{% extends "root.html" %}
-
-{% block content %}
-        <h1> {{ post.title }}</h1>
-        <p> {{ post.created_date }}</p>
-        <p> {{ post.published_date }}</p>
-        <a href="{{ post.get_absolute_url }}">Back</a>
-{% endblock %}

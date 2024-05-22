@@ -1,0 +1,8 @@
+{% extends "root.html" %}
+
+{% block content %}
+        <h1> {{ claim.title }}</h1>
+        <p> {{ claim.created_date }}</p>
+        <p> {{ claim.published_date }}</p>
+        <a href="{{ claim.get_absolute_url }}">Back</a>
+{% endblock %}

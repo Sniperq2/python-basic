@@ -1,0 +1,15 @@
+{% extends "root.html" %}
+
+{% block content %}
+<ul>
+    {% for claim in claims %}
+    <li>
+        <a href="{% url 'claim' claim.pk %}"><h1> {{ claim.title }}</h1></a>
+        <p> {{ claim.created_date }}</p>
+        <p> {{ claim.published_date }}</p>
+    </li>
+    {% empty %}
+    <li>No claims yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
