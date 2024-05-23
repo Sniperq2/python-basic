@@ -19,9 +19,12 @@
           <a class="nav-link" href="{% url 'about' %}">О проекте</a>
         </li>
       </ul>
-
-      <a class="btn btn-outline-success disabled" href="accounts/register">Зарегистрироваться</a>
-      <a class="btn btn-outline-success" href="accounts/login">Войти</a>
+      {% if user.is_authenticated %}
+        <a class="btn btn-outline-success" href="{% url 'logoutView'%}">Выйти</a>
+      {% else %}
+        <a class="btn btn-outline-success disabled" href="{% url 'authView' %}">Зарегистрироваться</a>
+        <a class="btn btn-outline-success" href="{% url 'authView'%}">Войти</a>
+      {% endif%}
     </div>
   </div>
 </nav>
