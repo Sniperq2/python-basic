@@ -9,7 +9,7 @@
                 <img src="{{ claim.image.url}}" class="card-img-top" width="100px" height="200px" border=1
                      alt="{{ claim.image.url}}">
                 <div class="card-body">
-                    <h5 class="card-title">Сообщение № {{ claim.id}} {{ claim.title }}</h5>
+                    <h5 class="card-title">Сообщение № {{ claim.id}} {{ claim.title }} - Статус {{ claim.status}}</h5>
                     <p class="card-text">
                         {{ claim.text}}
                         <span>Дата создания зявки: {{ claim.created_date }}</span>
