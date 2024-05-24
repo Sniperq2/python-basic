@@ -1,0 +1,16 @@
+{% extends "root.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="card" style="width: 20rem;">
+      <img src="{{ claim.image.url}}" class="card-img-top" width="100px" height="200px" border=1 alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Сообщение № {{ claim.id}} {{ claim.title }}</h5>
+        <p>{{ claim.text}}</p>
+
+        <p>Дата создания зявки: {{ claim.created_date }}</p>
+        <p>Дата рассмотрения: {{ claim.moderation_till }}</p>
+      </div>
+    </div>
+</div>
+{% endblock %}

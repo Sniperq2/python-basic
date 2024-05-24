@@ -1,0 +1,42 @@
+{% extends "root.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for claim in claims %}
+        <a href="{% url 'claim' claim.pk %}">
+            <div class="card" style="width: 20rem;">
+                <img src="{{ claim.image.url}}" class="card-img-top" width="100px" height="200px" border=1
+                     alt="{{ claim.image.url}}">
+                <div class="card-body">
+                    <h5 class="card-title">Сообщение № {{ claim.id}} {{ claim.title }} - Статус {{ claim.status}}</h5>
+                    <p class="card-text">
+                        {{ claim.text}}
+                        <span>Дата создания зявки: {{ claim.created_date }}</span>
+                        <span>Дата рассмотрения: {{ claim.moderation_till }}</span>
+                    </p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+    <span class="step-links">
+        {% if claims.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ claims.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ claims.number }} of {{ claims.paginator.num_pages }}.
+        </span>
+
+        {% if claims.has_next %}
+            <a href="?page={{ claims.next_page_number }}">next</a>
+            <a href="?page={{ claims.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+    </div>
+</div>
+
+{% endblock %}
