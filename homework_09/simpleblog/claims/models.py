@@ -34,7 +34,7 @@ class Claim(models.Model):
         self.save()
 
     def get_absolute_url(self):
-        return reverse('claims', kwargs={})
+        return reverse('home', kwargs={})
 
     def __str__(self):
         return self.title
