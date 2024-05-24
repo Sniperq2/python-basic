@@ -1,10 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView
 from django.contrib.auth import authenticate, login, logout
 
+from .forms import AddClaimForm
 from .models import Claim
 
 
@@ -21,7 +23,7 @@ class ShowProposal(DetailView):
 
 def home(request):
     claims = Claim.objects.all()
-    paginator = Paginator(claims, 1)
+    paginator = Paginator(claims, 2)
 
     page_number = request.GET.get("page")
     claims = paginator.get_page(page_number)
@@ -55,8 +57,10 @@ def authView(request):
         return render(request, 'registration/login.html', {})
 
 
-def add_claim(request):
-    return render(request, 'claims/create.html')
+class ClaimCreate(LoginRequiredMixin, CreateView):
+    model = Claim
+    form_class = AddClaimForm
+    template_name = 'claims/create.html'
 
 
 def about(request):

@@ -1,7 +1,6 @@
 from django.urls import path, include
 
-from .forms import ClaimCreate
-from .views import ShowProposal, profile_view, authView, home, about, logoutView
+from .views import ShowProposal, profile_view, authView, home, about, logoutView, ClaimCreate
 
 urlpatterns = [
     path("", home, name="home"),
